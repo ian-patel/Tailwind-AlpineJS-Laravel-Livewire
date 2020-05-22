@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+/**
+ * Authentication
+ */
+Route::middleware('guest')->group(function () {
+    Route::livewire('/login', 'auth.login')->layout('layouts.auth')->name('auth.login');
+    Route::livewire('/register', 'auth.register')->layout('layouts.auth')->name('auth.register');
+});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -36,6 +36,7 @@
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="email">Email Address</label>
                 <input type="email" wire:model="email" id="email" autofocus
                     class="@error('email') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none focus:bg-gray-100">
+                @error('email') <div class="mt-1 text-sm text-red-500">{{ $message }}</div> @enderror
             </div>
             <div class="mt-4">
                 <div class="flex justify-between">
@@ -43,7 +44,8 @@
                     <a href="#" class="text-xs text-gray-500 hover:underline">Forget Password?</a>
                 </div>
                 <input type="password" wire:model="password" id="password"
-                    class="@error('email') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none focus:bg-gray-100">
+                    class="@error('password') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none focus:bg-gray-100">
+                @error('password') <div class="mt-1 text-sm text-red-500">{{ $message }}</div> @enderror
             </div>
             <div class="mt-8">
                 <button

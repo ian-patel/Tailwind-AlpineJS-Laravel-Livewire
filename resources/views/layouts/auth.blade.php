@@ -2,7 +2,7 @@
 
 @section('content')
 <x-topbar />
-<div class="flex items-center justify-center pt-16">
+<div class="flex items-center justify-center pt-24 pb-16 lg:pt-28">
     <div class="w-full">
         <div>
             @yield('content')

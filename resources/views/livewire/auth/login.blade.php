@@ -4,8 +4,8 @@
     </div>
     <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
         <form wire:submit.prevent="login" action="#" method="POST">
-            <h2 class="text-2xl font-semibold text-center text-gray-700">TALL</h2>
-            <p class="text-xl text-center text-gray-600">Welcome back!</p>
+            <img class="w-auto h-8 mx-auto" src="/images/logos/logo.svg" alt="One Read logo">
+            <p class="text-xl text-center text-gray-600 mt-7">Welcome back!</p>
             <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
                 <div class="px-4 py-3">
                     <svg viewBox="0 0 40 40" class="w-6 h-6">

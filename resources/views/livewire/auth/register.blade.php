@@ -1,11 +1,11 @@
 <div class="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl">
     <div class="hidden bg-cover lg:block lg:w-1/2"
-        style="background-image: url('https://source.unsplash.com/Kt-E_Qq8DW4/896x1016');">
+        style="background-image: url('https://source.unsplash.com/8jwCWlsBys8/896x1016');">
     </div>
     <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
         <form wire:submit.prevent="register" action="#" method="POST">
-            <h2 class="text-2xl font-semibold text-center text-gray-700">TALL</h2>
-            <p class="text-xl text-center text-gray-600">Register with us!</p>
+            <img class="w-auto h-8 mx-auto" src="/images/logos/logo.svg" alt="One Read logo">
+            <p class="text-xl text-center text-gray-600 mt-7">Register with us!</p>
 
             <div class="mt-8">
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="email">Email Address</label>

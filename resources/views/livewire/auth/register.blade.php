@@ -1,6 +1,5 @@
 <div class="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl">
-    <div class="hidden bg-cover lg:block lg:w-1/2"
-        style="background-image: url('https://source.unsplash.com/8jwCWlsBys8/896x1016');">
+    <div class="hidden bg-cover lg:block lg:w-1/2" style="background-image: url('/images/login.jpeg');">
     </div>
     <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
         <form wire:submit.prevent="register" action="#" method="POST">

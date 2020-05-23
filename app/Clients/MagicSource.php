@@ -48,7 +48,8 @@ class MagicSource
         );
 
         if ($response->ok()) {
-            return collect($response->json());
+            $body = $response->body();
+            return collect(json_decode($body)->feed);
         }
 
         return false;

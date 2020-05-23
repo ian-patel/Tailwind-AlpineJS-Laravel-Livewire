@@ -9,7 +9,7 @@
             <div class="mt-8">
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="email">Email Address</label>
                 <input type="email" wire:model.lazy="email" id="email" autofocus
-                    class="@error('email') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none focus:bg-gray-100">
+                    class="@error('email') border-red-500 @enderror  block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none">
                 @error('email') <div class="mt-1 text-sm text-red-500">{{ $message }}</div> @enderror
             </div>
             <div class="mt-4">
@@ -17,7 +17,7 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700" for="password">Password</label>
                 </div>
                 <input type="password" wire:model.lazy="password" id="password"
-                    class="@error('password') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none focus:bg-gray-100">
+                    class="@error('password') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none">
                 @error('password') <div class="mt-1 text-sm text-red-500">{{ $message }}</div> @enderror
             </div>
             <div class="mt-2">
@@ -26,7 +26,7 @@
                         Password</label>
                 </div>
                 <input type="password" wire:model.lazy="passwordConfirmation" id="passwordConfirmation"
-                    class="@error('passwordConfirmation') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none focus:bg-gray-100">
+                    class="@error('passwordConfirmation') border-red-500 @enderror block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded appearance-none focus:outline-none">
             </div>
             <div class="mt-8">
                 <button

@@ -1,7 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="flex items-center justify-center min-h-screen">
+<x-topbar />
+<div class="flex items-center justify-center pt-16">
     <div class="w-full">
         <div>
             @yield('content')

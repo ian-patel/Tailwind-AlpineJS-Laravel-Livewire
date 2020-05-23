@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Builder;
 class Source extends Model
 {
     /**
+     * Get the posts of the source.
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    /**
      * Scope a query to only active sources.
      *
      * @param $query

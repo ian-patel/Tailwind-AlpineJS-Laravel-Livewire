@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'magic_source' => [
+        'base_url' => env('MAGIC_BASE_URL'),
+    ],
+
 ];

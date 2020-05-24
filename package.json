@@ -24,6 +24,7 @@
         "@tailwindcss/ui": "^0.3.0",
         "alpinejs": "^2.3.5",
         "infinite-scroll": "^3.0.6",
-        "tailwindcss": "^1.4.6"
+        "tailwindcss": "^1.4.6",
+        "tailwindcss-filters": "^3.0.0"
     }
 }

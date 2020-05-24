@@ -41,7 +41,7 @@ class FetchPosts extends Command
     public function handle()
     {
         $sources = Source::all();
-        $feeds = MagicSource::fetch($limit = 2);
+        $feeds = MagicSource::fetch();
 
         $feeds->each(function ($feed) {
             $feed->hash = md5($feed->link);

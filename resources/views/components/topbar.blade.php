@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }" @keydown.window.escape="open = false"
-    class="fixed inset-x-0 top-0 z-50 flex items-center bg-white border-b border-gray-200">
+    class="fixed inset-x-0 top-0 z-40 flex items-center bg-white border-b border-gray-200">
     <div class="relative w-full max-w-screen-xl px-6 py-6 mx-auto bg-white">
         <div class="flex items-center">
             <div class="pl-6 pr-6 lg:w-1/4 xl:w-1/5 lg:pr-8">

@@ -1,6 +1,6 @@
 <div class="w-full min-h-screen lg:static lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5">
     <div class="flex">
-        <div class="w-full pt-16 pb-16">
+        <div class="w-full py-6">
             <div class="flex">
                 <div class="w-full max-w-3xl px-6 mx-auto markdown xl:px-12 lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4">
                     @yield('content')

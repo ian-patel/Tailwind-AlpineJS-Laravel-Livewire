@@ -1,5 +1,5 @@
-<div class="w-full lg:flex hover:shadow-sm">
-    <div class="flex-none hidden h-48 overflow-hidden text-center bg-center bg-cover rounded-t sm:block lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l"
+<div class="w-full lg:flex hover:shadow-sm group">
+    <div class="flex-none hidden h-48 overflow-hidden text-center bg-center bg-cover rounded-t filter-grayscale group-hover:filter-none sm:block lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l"
         style="background-image: url('{{ $post->image }}')" title="Image for {{ $post->title }}">
     </div>
     <div

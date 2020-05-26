@@ -2,7 +2,7 @@
     class="fixed inset-x-0 top-0 z-40 flex items-center bg-white border-b border-gray-200">
     <div class="relative w-full max-w-screen-xl px-6 py-6 mx-auto bg-white">
         <div class="flex items-center">
-            <div class="pl-6 pr-6 lg:w-1/4 xl:w-1/5 lg:pr-8">
+            <div class="pr-6 lg:w-1/4 xl:w-1/5 lg:pr-8">
                 <div class="flex items-center">
                     <a href="/">
                         <img class="hidden w-auto h-8 md:block" src="/images/logos/logo.svg" alt="One Read logo">
@@ -29,15 +29,12 @@
                 </div>
                 <div class="justify-end hidden px-6 lg:flex lg:items-center xl:w-1/4 md:flex md:flex-1">
                     <div class="flex ml-4 space-x-4 font-medium md:ml-6">
+                        @guest
                         <a href="{{ route('auth.login') }}"
                             class="text-base leading-6 text-gray-500 whitespace-no-wrap hover:text-gray-900 focus:outline-none focus:text-gray-900">
-                            Sign in
+                            Sign in/up
                         </a>
-                        <a href="{{ route('auth.register') }}"
-                            class="text-base leading-6 text-gray-500 whitespace-no-wrap hover:text-gray-900 focus:outline-none focus:text-gray-900">
-                            Register
-                        </a>
-
+                        @endguest
                         @auth
                         <!-- Profile dropdown -->
                         <div @click.away="open = false" class="relative ml-3" x-data="{ open: false }">
@@ -46,9 +43,7 @@
                                     class="flex items-center max-w-xs text-sm text-white rounded-full focus:outline-none focus:shadow-solid"
                                     id="user-menu" aria-label="User menu" aria-haspopup="true"
                                     x-bind:aria-expanded="open">
-                                    <img class="w-8 h-8 rounded-full"
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                        alt="">
+                                    <img class="w-8 h-8 rounded-full" src="{{ Auth::user()->avatar }}" alt="">
                                 </button>
                             </div>
                             <div x-show="open"
@@ -67,15 +62,17 @@
                                         role="menuitem">Your Profile</a>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                         role="menuitem">Settings</a>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                        role="menuitem">Sign out</a>
+                                    <a href="{{ route('logout') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
+                                        out</a>
                                 </div>
                             </div>
                         </div>
                         @endauth
                     </div>
                 </div>
-                <div class="flex ml-2 -mr-2 md:hidden">
+                <div class="flex ml-4 -mr-2 md:hidden">
                     <!-- Mobile menu button -->
                     <button @click="open = !open"
                         class="inline-flex items-center justify-center p-2 text-gray-800 hover:text-cool-gray-900 focus:outline-none"
@@ -115,15 +112,14 @@
                     class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports</a>
             </div>
             <div class="pt-4 pb-3 border-t border-gray-700">
+                @auth
                 <div class="flex items-center px-5">
                     <div class="flex-shrink-0">
-                        <img class="w-10 h-10 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                            alt="">
+                        <img class="w-10 h-10 rounded-full" src="{{ Auth::user()->avatar }}" alt="">
                     </div>
                     <div class="ml-3">
-                        <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                        <div class="mt-1 text-sm font-medium leading-none text-gray-600">tom@example.com</div>
+                        <div class="text-base font-medium leading-none text-white">{{ Auth::user()->name }}</div>
+                        <div class="mt-1 text-sm font-medium leading-none text-gray-600">{{ Auth::user()->name }}</div>
                     </div>
                 </div>
                 <div class="px-2 mt-3">
@@ -132,10 +128,13 @@
                         Profile</a>
                     <a href="#"
                         class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Settings</a>
-                    <a href="#"
-                        class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sign
+                    <a href="{{ route('logout') }}"
+                        class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                        role="menuitem"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
                         out</a>
                 </div>
+                @endauth
             </div>
         </div>
     </div>

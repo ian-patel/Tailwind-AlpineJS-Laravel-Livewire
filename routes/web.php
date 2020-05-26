@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,11 @@ Route::get('/', function () {
 // Post
 Route::group(['prefix' => 'p'], function () {
     Route::get('{id}-{slug}', [PostController::class, 'show']);
+});
+
+// Source
+Route::group(['prefix' => 's'], function () {
+    Route::get('{slug}', [SourceController::class, 'show']);
 });
 
 /**

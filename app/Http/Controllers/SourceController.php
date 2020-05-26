@@ -41,12 +41,23 @@ class SourceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Source  $source
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show(Source $source)
+    public function show(string $slug)
     {
-        //
+        $source  = Source::active()->ofSlug($slug)->firstOrFail();
+
+        $posts = $source->posts()
+            ->active()
+            ->with(['source'])
+            ->latest()
+            ->simplePaginate(30);
+
+        return view('pages.source-view', [
+            'posts' => $posts,
+            'source' => $source,
+        ]);
     }
 
     /**

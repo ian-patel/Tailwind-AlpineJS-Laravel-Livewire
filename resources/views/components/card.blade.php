@@ -8,7 +8,8 @@
                         src="https://res.cloudinary.com/madewithlove/image/upload/v1524027194/{{ $post->source->code }}.png"
                         alt="Avatar of Jonathan Reinink">
                     <div class="text-sm">
-                        <a href="/" class="pb-0 leading-none text-gray-700">{{ $post->source->name }}</a>
+                        <a href="/s/{{ $post->source->code }}"
+                            class="pb-0 leading-none text-gray-700">{{ $post->source->name }}</a>
                         <p class="p-0 text-xs text-gray-600">
                             {{ $post->created_at->format('F j') }}
                         </p>

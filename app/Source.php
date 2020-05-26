@@ -29,6 +29,19 @@ class Source extends Model
     }
 
     /**
+     * Scope a query to only source code.
+     *
+     * @param $query
+     * @param bool $active
+     * 
+     * @return Builder
+     */
+    public function scopeOfSlug($query, string $slug): Builder
+    {
+        return $query->where('code', $slug);
+    }
+
+    /**
      * List sources which are fetchable.
      *
      * @return array

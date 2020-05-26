@@ -1,27 +1,26 @@
 <div class="w-full lg:flex hover:shadow-sm group">
-    <div class="flex-none hidden h-48 overflow-hidden text-center bg-center bg-cover rounded-t filter-grayscale group-hover:filter-none sm:block lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l"
-        style="background-image: url('{{ $post->image }}')" title="Image for {{ $post->title }}">
-    </div>
     <div
-        class="flex flex-col justify-between w-full p-4 leading-normal bg-white border border-gray-200 rounded-b lg:border-t lg:rounded-b-none lg:rounded-r">
+        class="flex flex-col justify-between w-full p-4 leading-normal bg-white border border-gray-200 rounded lg:border-t lg:rounded-r-none">
         <div class="">
             <div class="flex items-center">
                 <div class="flex items-center flex-1">
-                    <img class="w-5 h-5 mr-2 rounded-full"
+                    <img class="w-8 h-8 mr-2 rounded-full"
                         src="https://res.cloudinary.com/madewithlove/image/upload/v1524027194/{{ $post->source->code }}.png"
                         alt="Avatar of Jonathan Reinink">
                     <div class="text-sm">
-                        <p class="leading-none text-gray-500">{{ $post->source->name }}</p>
+                        <a href="/" class="pb-0 leading-none text-gray-700">{{ $post->source->name }}</a>
+                        <p class="p-0 text-xs text-gray-600">
+                            {{ $post->created_at->format('F j') }}
+                        </p>
                     </div>
                 </div>
-                <div class="flex-1 text-right ">
-                    <p class="text-xs text-gray-600">
-                        {{ $post->created_at->format('F j') }}
-                    </p>
+                <div class="flex justify-end flex-1 w-1/2">
+                    <button
+                        class="px-4 py-1 text-xs font-medium text-gray-500 bg-gray-100 rounded hover:bg-gray-300 hover:text-gray-600">Save</button>
                 </div>
             </div>
             <div class="mt-2 mb-2 text-xl font-extrabold text-gray-900 hover:text-purple-600">
-                <a href="{{ $post->link }}" target="_new">
+                <a href="{{ $post->URL }}">
                     {{ $post->title }}
                 </a>
             </div>
@@ -34,11 +33,10 @@
                     </svg>
                     <span class="ml-2 text-sm"> {{ $post->clicks }} views </span>
                 </div>
-                <div class="flex justify-end flex-1 w-1/2">
-                    <button
-                        class="px-4 py-1 text-xs font-medium text-gray-500 bg-gray-200 rounded hover:bg-gray-300 hover:text-gray-600">Save</button>
-                </div>
+
             </div>
         </div>
     </div>
+    <div class="flex-none hidden h-48 overflow-hidden text-center bg-center bg-cover rounded-r filter-grayscale group-hover:filter-none lg:block lg:h-auto lg:w-48"
+        style="background-image: url('{{ $post->image }}')" title="Image for {{ $post->title }}"></div>
 </div>

@@ -44,9 +44,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(int $id)
     {
-        //
+        $post = Post::active()->with('source')->findOrFail($id);
+
+        $post->increment('clicks');
+
+        if (!$post->source->is_frame_allowed) {
+            return response()->redirectTo($post->link, 301);
+        }
+
+        return view('pages.post-view', [
+            'post' => $post,
+        ]);
     }
 
     /**

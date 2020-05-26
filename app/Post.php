@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -53,6 +54,16 @@ class Post extends Model
     }
 
     /**
+     * Scope a query to only active posts.
+     *
+     * @return Builder
+     */
+    public function scopeActive($query, $active = true): Builder
+    {
+        return $query->where('is_active', $active);
+    }
+
+    /**
      * Create a new instance from feed.
      *
      * @param  array|object  $feed
@@ -66,5 +77,15 @@ class Post extends Model
         $post->slug = Str::slug($feed->title ?? '');
 
         return $post;
+    }
+
+    /**
+     * Get Url of the post.
+     *
+     * @return string
+     */
+    public function getURLAttribute(): string
+    {
+        return "/p/{$this->id}-" . ($this->slug ?: 'a');
     }
 }

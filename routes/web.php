@@ -4,6 +4,7 @@ use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,13 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('pages.welcome', [
-        'posts' => Post::with('source')->simplePaginate(60),
+        'posts' => Post::with('source')->simplePaginate(30),
     ]);
+});
+
+// Post
+Route::group(['prefix' => 'p'], function () {
+    Route::get('{id}-{slug}', [PostController::class, 'show']);
 });
 
 /**

@@ -20,6 +20,7 @@ class CreateSourcesTable extends Migration
             $table->text('url')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true)->index();
+            $table->boolean('is_frame_allowed')->default(true);
             $table->timestamps();
         });
     }

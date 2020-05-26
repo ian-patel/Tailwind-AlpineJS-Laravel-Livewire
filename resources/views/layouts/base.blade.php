@@ -17,7 +17,7 @@
     @yield('content')
     <!-- Styles -->
     @livewireScripts
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" data-turbolinks-suppress-warning></script>
 </body>
 
 </html>

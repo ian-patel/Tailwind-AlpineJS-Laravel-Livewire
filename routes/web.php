@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SourceController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,12 @@ Route::group(['prefix' => 's'], function () {
 /**
  * Authentication
  */
-Route::middleware('guest')->group(function () {
+Route::group(['prefix' => 'login'], function () {
+    Route::get('{provider}', [LoginController::class, 'redirectToProvider']);
+    Route::get('{provider}/callback', [LoginController::class, 'handleProviderCallback']);
+});
 
+Route::middleware('guest')->group(function () {
     Route::layout('layouts.auth')->group(function () {
         Route::livewire('/login', 'auth.login')->name('auth.login');
         Route::livewire('/register', 'auth.register')->name('auth.register');

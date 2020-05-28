@@ -1,12 +1,12 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg lg:max-w-4xl">
+<div class="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg md:max-w-4xl">
     <div class="w-full px-6 py-8 md:px-8">
         <img class="w-auto h-32 mx-auto" src="/images/logos/logo-v.svg" alt="One Read logo">
         <h1 class="mt-12 text-2xl text-center text-gray-600">👋🏻 Great to have you!</h1>
 
-        <div class="mt-20 space-y-5 md:flex md:space-x-5 md:space-y-0">
+        <div class="mt-20 space-y-5 sm:flex md:space-x-5 md:space-y-0">
             <div class="flex flex-col justify-between w-full">
                 <a href="/login/google"
                     class="flex items-center w-full rounded-lg shadow-md justify-centertext-white hover:bg-gray-100">
@@ -26,7 +26,7 @@
                                 fill="#1976D2"></path>
                         </svg>
                     </div>
-                    <h3 class="w-5/6 px-4 py-3 font-bold text-center text-gray-600">Sign in with Google</h3>
+                    <h3 class="w-5/6 py-3 font-bold text-center text-gray-600">Sign in with Google</h3>
                 </a>
             </div>
             <div class="flex flex-col justify-between w-full">
@@ -41,7 +41,7 @@
                             </g>
                         </svg>
                     </div>
-                    <h3 class="w-5/6 px-4 py-3 font-bold text-center text-gray-600">Sign in with Twitter</h3>
+                    <h3 class="w-5/6 py-3 font-bold text-center text-gray-600">Sign in with Twitter</h3>
                 </a>
             </div>
             <div class="flex flex-col justify-between w-full">
@@ -78,7 +78,7 @@
                             </g>
                         </svg>
                     </div>
-                    <h3 class="w-5/6 px-4 py-3 font-bold text-center text-gray-600">Sign in with Github</h3>
+                    <h3 class="w-5/6 py-3 font-bold text-center text-gray-600">Sign in with Github</h3>
                 </a>
             </div>
         </div>

@@ -21,7 +21,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
     return view('pages.welcome', [
-        'posts' => Post::with('source')->simplePaginate(30),
+        'posts' => Post::with('source')->latest()->simplePaginate(30),
     ]);
 });
 

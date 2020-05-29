@@ -17,6 +17,7 @@ class CreateSourcesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('code')->index();
+            $table->string('colour')->nullable();
             $table->text('url')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true)->index();

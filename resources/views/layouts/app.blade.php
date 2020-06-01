@@ -7,4 +7,5 @@
         <x-content-wrapper />
     </div>
 </div>
+<x-modals.login />
 @overwrite

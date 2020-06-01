@@ -31,7 +31,7 @@
                     <div class="flex ml-4 space-x-4 font-medium md:ml-6">
                         @guest
                         <a href="{{ route('auth.login') }}"
-                            class="text-base leading-6 text-gray-500 whitespace-no-wrap hover:text-gray-900 focus:outline-none focus:text-gray-900">
+                            class="text-base leading-6 text-gray-700 whitespace-no-wrap hover:text-gray-900 focus:outline-none focus:text-gray-900">
                             Sign in/up
                         </a>
                         @endguest
@@ -140,3 +140,6 @@
     </div>
     </div>
 </nav>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>

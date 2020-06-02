@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Post;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -44,10 +45,15 @@ class FetchPostMeta implements ShouldQueue
      */
     public function handle()
     {
-        $meta = get_meta_tags($this->post->link);
-        $description = $meta['description'] ?? $meta['twitter:description'] ?? $meta['sailthru_description'];
+        try {
+            $meta = get_meta_tags($this->post->link);
+            $description = $meta['description'] ?? $meta['twitter:description'] ?? $meta['sailthru_description'];
 
-        $this->post->description = $description;
+            $this->post->description = $description;
+        } catch (Exception $e) {
+            $this->post->is_active = false;
+        }
+
         $this->post->save();
     }
 }

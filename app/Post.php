@@ -39,6 +39,14 @@ class Post extends Model
     }
 
     /**
+     * Get the users who favorited the post.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    /**
      * Scope a query to only specified source.
      *
      * @param $query

@@ -38,4 +38,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the favorites post of the user.
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany(Post::class);
+    }
+
+    /**
+     * Favorite the post.
+     *
+     * @param Post $post
+     * @return void
+     */
+    public function favorite(Post $post)
+    {
+        $this->favorites()->syncWithoutDetaching([$post->id]);
+    }
+
+    /**
+     * Unfavorite the post.
+     *
+     * @param Post $post
+     * @return void
+     */
+    public function unfavorite(Post $post)
+    {
+        $this->favorites()->detach([$post->id]);
+    }
 }

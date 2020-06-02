@@ -14,7 +14,20 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with('source')
+            ->active()
+            ->latest()
+            ->simplePaginate(30);
+
+        if (auth()->user()) {
+            $favorites =  auth()->user()->favorites()->select('id')->get();
+
+            foreach ($posts->items() as $post) {
+                $post->favorite = $favorites->firstWhere('id', $post->id) ? true : false;
+            }
+        }
+
+        return view('pages.welcome')->with(['posts' => $posts]);
     }
 
     /**

@@ -19,11 +19,7 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.welcome', [
-        'posts' => Post::with('source')->latest()->simplePaginate(30),
-    ]);
-});
+Route::get('/', [PostController::class, 'index']);
 
 // Post
 Route::group(['prefix' => 'p'], function () {

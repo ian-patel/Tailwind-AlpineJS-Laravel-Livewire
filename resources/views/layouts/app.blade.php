@@ -7,5 +7,7 @@
         <x-content-wrapper />
     </div>
 </div>
+@guest
 <x-modals.login />
+@endguest
 @overwrite

@@ -12,20 +12,7 @@
             </div>
             <div class="flex flex-grow lg:w-3/4 xl:w-4/5">
                 <div class="w-full lg:px-6 xl:w-3/4 xl:px-12">
-                    <div class="relative">
-                        <input
-                            class="block w-full py-2 pl-10 pr-4 mt-1 leading-normal appearance-none form-input focus:outline-0"
-                            placeholder="Search the articels">
-
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none ">
-                            <svg class="w-4 h-4 text-gray-400 pointer-events-none fill-current"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path
-                                    d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
+                    @livewire('search-posts')
                 </div>
                 <div class="justify-end hidden px-6 lg:flex lg:items-center xl:w-1/4 md:flex md:flex-1">
                     <div class="flex ml-4 space-x-4 font-medium md:ml-6">

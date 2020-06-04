@@ -13,7 +13,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="font-sans antialiased" x-data="{ loginmodal: false }">
+<body class="font-sans antialiased body" x-data="{ loginmodal: false }">
     @yield('content')
     <!-- Styles -->
     @livewireScripts

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Post;
 use App\Observers\PostObserver;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useTailwind();
+
         Post::observe(PostObserver::class);
     }
 }

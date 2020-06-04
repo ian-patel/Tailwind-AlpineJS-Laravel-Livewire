@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<x-infinite-scroll :posts="$posts" />
+@livewire('show-posts')
 @overwrite

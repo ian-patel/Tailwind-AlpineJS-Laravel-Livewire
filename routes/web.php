@@ -19,9 +19,7 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.welcome');
-});
+Route::get('/', [PostController::class, 'index']);
 
 // Post
 Route::group(['prefix' => 'p'], function () {

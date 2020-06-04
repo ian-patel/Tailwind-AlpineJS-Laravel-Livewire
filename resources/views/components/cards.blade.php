@@ -6,4 +6,5 @@
     <x-card :post="$post" />
     @endif
     @endforeach
+    {{ $posts->links() }}
 </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-@livewire('show-posts')
+<x-cards :posts="$posts" />
 @overwrite

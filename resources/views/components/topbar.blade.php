@@ -14,6 +14,7 @@
                 <div class="w-full lg:px-6 xl:w-3/4 xl:px-12">
                     @livewire('search-posts')
                 </div>
+
                 <div class="justify-end hidden px-6 lg:flex lg:items-center xl:w-1/4 md:flex md:flex-1">
                     <div class="flex ml-4 space-x-4 font-medium md:ml-6">
                         @guest
@@ -22,15 +23,16 @@
                             Sign in/up
                         </a>
                         @endguest
+
                         @auth
-                        <!-- Profile dropdown -->
                         <div @click.away="open = false" class="relative ml-3" x-data="{ open: false }">
                             <div>
                                 <button @click="open = !open"
                                     class="flex items-center max-w-xs text-sm text-white rounded-full focus:outline-none focus:shadow-solid"
                                     id="user-menu" aria-label="User menu" aria-haspopup="true"
                                     x-bind:aria-expanded="open">
-                                    <img class="w-8 h-8 rounded-full" src="{{ Auth::user()->avatar }}" alt="">
+                                    <img class="w-8 border-l border-r border-gray-300 border-solid rounded-full hover:border-gray-900 hover:border-l-3 hover:border-r-3"
+                                        src="{{ Auth::user()->avatar }}" alt="Avatar of {{ Auth::user()->name }}">
                                 </button>
                             </div>
                             <div x-show="open"
@@ -45,20 +47,64 @@
                                 style="display: none;">
                                 <div class="py-1 bg-white rounded-md shadow-xs" role="menu" aria-orientation="vertical"
                                     aria-labelledby="user-menu">
+                                    <div class="flex items-center px-4 py-2">
+                                        <img class="w-10 h-10 mr-4 rounded-full" src="{{ Auth::user()->avatar }}"
+                                            alt="Avatar of {{ Auth::user()->name }}">
+                                        <div class="text-sm">
+                                            <p class="leading-none text-gray-900">{{ Auth::user()->name }}</p>
+                                            @if (Auth::user()->username)
+                                            <p class="mt-1 text-xs text-gray-400 ">{{ '@' . Auth::user()->username }}
+                                            </p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="border-t border-gray-100"></div>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                        role="menuitem">Your Profile</a>
+                                        role="menuitem">
+                                        <span class="inline-flex ">
+                                            <svg fill="none" viewBox="0 0 20 20" class="w-5 h-5 mr-2 text-gray-400"
+                                                stroke="currentColor">
+                                                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+                                            </svg>
+                                            Reading list
+                                        </span>
+                                    </a>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                        role="menuitem">Settings</a>
+                                        role="menuitem">
+                                        <span class="inline-flex">
+                                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1" viewBox="0 0 24 24" stroke="currentColor"
+                                                class="w-5 h-5 mr-2 text-gray-400">
+                                                <path
+                                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                                </path>
+                                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                            Settings
+                                        </span>
+                                    </a>
+                                    <div class="border-t border-gray-100"></div>
                                     <a href="{{ route('logout') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
-                                        out</a>
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <span class="inline-flex">
+                                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1" viewBox="0 0 24 24" stroke="currentColor"
+                                                class="w-5 h-5 mr-2 text-gray-400">
+                                                <path
+                                                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                                                </path>
+                                            </svg>
+                                            Sign out
+                                        </span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         @endauth
                     </div>
                 </div>
+
                 <div class="flex ml-4 -mr-2 md:hidden">
                     <!-- Mobile menu button -->
                     <button @click="open = !open"
@@ -86,40 +132,63 @@
 
         <div x-description="Mobile menu, toggle classes based on menu state." x-state:on="Open" x-state:off="closed"
             :class="{ 'block': open, 'hidden': !open }" class="hidden md:hidden">
-            <div class="px-2 pt-2 pb-3 sm:px-3">
-                <a href="#"
-                    class="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md focus:outline-none focus:text-white focus:bg-gray-700">Dashboard</a>
-                <a href="#"
-                    class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Team</a>
-                <a href="#"
-                    class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Projects</a>
-                <a href="#"
-                    class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Calendar</a>
-                <a href="#"
-                    class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports</a>
-            </div>
-            <div class="pt-4 pb-3 border-t border-gray-700">
+            <div class="pt-4 pb-3">
+                @guest
+                <a href="{{ route('auth.login') }}"
+                    class="text-base leading-6 text-gray-700 whitespace-no-wrap hover:text-gray-900 focus:outline-none focus:text-gray-900">
+                    Sign in/up
+                </a>
+                @endguest
+
                 @auth
-                <div class="flex items-center px-5">
-                    <div class="flex-shrink-0">
-                        <img class="w-10 h-10 rounded-full" src="{{ Auth::user()->avatar }}" alt="">
-                    </div>
-                    <div class="ml-3">
-                        <div class="text-base font-medium leading-none text-white">{{ Auth::user()->name }}</div>
-                        <div class="mt-1 text-sm font-medium leading-none text-gray-600">{{ Auth::user()->name }}</div>
+                <div class="flex items-center px-4 py-2">
+                    <img class="w-10 h-10 mr-4 rounded-full" src="{{ Auth::user()->avatar }}"
+                        alt="Avatar of {{ Auth::user()->name }}">
+                    <div class="text-sm">
+                        <p class="leading-none text-gray-900">{{ Auth::user()->name }}</p>
+                        @if (Auth::user()->username)
+                        <p class="mt-1 text-xs text-gray-400 ">{{ '@' . Auth::user()->username }}
+                        </p>
+                        @endif
                     </div>
                 </div>
                 <div class="px-2 mt-3">
-                    <a href="#"
-                        class="block px-3 py-2 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Your
-                        Profile</a>
-                    <a href="#"
-                        class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Settings</a>
-                    <a href="{{ route('logout') }}"
-                        class="block px-3 py-2 mt-1 text-base font-medium text-gray-600 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                    <div class="border-t border-gray-100"></div>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                        <span class="inline-flex ">
+                            <svg fill="none" viewBox="0 0 20 20" class="w-5 h-5 mr-2 text-gray-400"
+                                stroke="currentColor">
+                                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+                            </svg>
+                            Reading list
+                        </span>
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                        <span class="inline-flex">
+                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                                <path
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                </path>
+                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            Settings
+                        </span>
+                    </a>
+                    <div class="border-t border-gray-100"></div>
+                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
-                        out</a>
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <span class="inline-flex">
+                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                                <path
+                                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                                </path>
+                            </svg>
+                            Sign out
+                        </span>
+                    </a>
                 </div>
                 @endauth
             </div>

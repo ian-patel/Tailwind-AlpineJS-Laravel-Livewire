@@ -5,7 +5,7 @@
                 <div class="hidden md:text-sm md:block md:w-1/4 md:px-6">
                     <div
                         class="flex flex-col justify-between overflow-y-auto sticky top-16 max-h-(screen-16) pt-12 pb-4 -mt-12">
-                        <div class="h-screen bg-green-50">
+                        <div class="h-screen">
                             @yield('left-sidebar')
                         </div>
                     </div>
@@ -16,7 +16,7 @@
                 <div class="hidden xl:text-sm xl:block xl:w-1/4 xl:px-6">
                     <div
                         class="flex flex-col justify-between overflow-y-auto sticky top-16 max-h-(screen-16) pt-12 pb-4 -mt-12">
-                        <div class="h-screen bg-green-50">
+                        <div class="h-screen">
                             @yield('right-sidebar')
                         </div>
                     </div>

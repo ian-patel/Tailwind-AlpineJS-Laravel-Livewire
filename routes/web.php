@@ -26,6 +26,11 @@ Route::group(['prefix' => 'p'], function () {
     Route::get('{id}-{slug}', [PostController::class, 'show']);
 });
 
+// Search
+Route::group(['prefix' => 'search'], function () {
+    Route::get('/', [PostController::class, 'search'])->name('search');
+});
+
 // Source
 Route::group(['prefix' => 's'], function () {
     Route::get('{slug}', [SourceController::class, 'show']);

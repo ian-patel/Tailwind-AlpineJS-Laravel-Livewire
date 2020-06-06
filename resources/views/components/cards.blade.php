@@ -6,5 +6,5 @@
     <x-card :post="$post" />
     @endif
     @endforeach
-    {{ $posts->links() }}
+    {{ $posts->withQueryString()->links() }}
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -19,15 +20,12 @@ class PostController extends Controller
             ->latest()
             ->simplePaginate(30);
 
-        if (auth()->user()) {
-            $favorites =  auth()->user()->favorites()->select('id')->get();
-
-            foreach ($posts->items() as $post) {
-                $post->favorite = $favorites->firstWhere('id', $post->id) ? true : false;
-            }
+        if (Auth::user()) {
+            $posts = Post::AppendFavorite($posts, Auth::user());
         }
 
-        return view('pages.welcome')->with(['posts' => $posts]);
+        return view('pages.welcome')
+            ->with(['posts' => $posts]);
     }
 
     /**
@@ -35,9 +33,23 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        $q = $request->input('q');
+
+        $posts = Post::search($q)
+            ->with('source')
+            ->active()
+            ->latest()
+            ->orderby('clicks', 'desc')
+            ->simplePaginate(30);
+
+        if (Auth::user()) {
+            $posts = Post::AppendFavorite($posts, Auth::user());
+        }
+
+        return view('pages.search')
+            ->with(['posts' => $posts ?? collect()]);
     }
 
     /**
@@ -67,9 +79,8 @@ class PostController extends Controller
             return response()->redirectTo($post->link, 301);
         }
 
-        return view('pages.post-view', [
-            'post' => $post,
-        ]);
+        return view('pages.post-view')
+            ->with(['post' => $post]);
     }
 
     /**

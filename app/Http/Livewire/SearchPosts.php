@@ -20,15 +20,15 @@ class SearchPosts extends Component
     public function render()
     {
         if ($this->q and Str::length($this->q) > 3) {
-            $posts = Post::where('title', 'like', '%' . $this->q . '%')
+            $posts = Post::search($this->q)
+                ->active()
                 ->latest()
                 ->orderby('clicks', 'desc')
                 ->limit(5)
                 ->get();
         }
 
-        return view('livewire.search-posts', [
-            'posts' => $posts ?? collect(),
-        ]);
+        return view('livewire.search-posts')
+            ->with(['posts' => $posts ?? collect()]);
     }
 }

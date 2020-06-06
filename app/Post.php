@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -72,6 +73,16 @@ class Post extends Model
     }
 
     /**
+     * Scope a query to search posts.
+     *
+     * @return Builder
+     */
+    public function scopeSearch($query, string $q): Builder
+    {
+        return $query->where('title', 'like', '%' . $q . '%');
+    }
+
+    /**
      * Create a new instance from feed.
      *
      * @param  array|object  $feed
@@ -95,5 +106,26 @@ class Post extends Model
     public function getURLAttribute(): string
     {
         return "/p/{$this->id}-" . ($this->slug ?: 'a');
+    }
+
+    /**
+     * Append favorite tag to Paginator for the user.
+     *
+     * @param Paginator $posts
+     * @parem User $user
+     * @return Paginator
+     */
+    public static function AppendFavorite(Paginator $posts, User $user): Paginator
+    {
+        $favorites =  $user->favorites()->select('id')->get();
+
+        $posts->setCollection(
+            $posts->getCollection()
+                ->each(function ($post) use ($favorites) {
+                    $post->favorite = $favorites->firstWhere('id', $post->id) ? true : false;
+                })
+        );
+
+        return $posts;
     }
 }

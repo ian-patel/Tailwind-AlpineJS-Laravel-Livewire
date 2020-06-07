@@ -49,7 +49,10 @@ class PostController extends Controller
         }
 
         return view('pages.search')
-            ->with(['posts' => $posts ?? collect()]);
+            ->with([
+                'q' => $q,
+                'posts' => $posts ?? collect()
+            ]);
     }
 
     /**

@@ -79,7 +79,7 @@ class Post extends Model
      */
     public function scopeSearch($query, string $q): Builder
     {
-        return $query->where('title', 'like', '%' . $q . '%');
+        return $query->whereRaw("MATCH (title) AGAINST ('+{$q}' IN BOOLEAN MODE)");
     }
 
     /**

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<nav class="w-full p-3 m-4 font-sans rounded bg-grey-light">
+<nav class="w-full mt-5 mb-10">
     <ol class="flex list-reset text-grey-dark">
-        <li><button onclick="goBack()" class="font-bold cursor-pointer text-blue">Posts</button></li>
+        <li><a onclick="goBack()" class="font-bold cursor-pointer">Posts</a></li>
         <li><span class="mx-2">/</span></li>
         <li>{{ $post->title }}</li>
     </ol>

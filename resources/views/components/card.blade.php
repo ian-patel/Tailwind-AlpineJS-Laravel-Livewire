@@ -2,9 +2,17 @@
     <div class="flex flex-col justify-between w-full p-4 leading-normal">
         <div class="">
             <div class="mb-2">
-                <a href="{{ $post->URL }}" target="new"
-                    class="text-2xl text-gray-900 leading-tight font-semibold hover:text-{{ $post->source->colour ?? 'purple' }}-600">
+                <a href="{{ $post->URL }}" @if (!$post->source->is_frame_allowed) target="new" @endif
+                    class="text-2xl text-gray-900 leading-tight font-semibold
+                    hover:text-{{ $post->source->colour ?? 'purple' }}-600">
                     {{ $post->title }}
+                    @if (!$post->source->is_frame_allowed)
+                    <svg class="inline-block h-3 text-gray-500" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                        </path>
+                    </svg>
+                    @endif
                 </a>
                 <p class="my-3 text-xs text-gray-500">{!! Str::limit($post->description, 120) !!}</p>
                 <a class="text-sm text-gray-700 hover:text-{{ $post->source->colour ?? 'purple' }}-600"

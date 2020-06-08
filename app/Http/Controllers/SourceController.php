@@ -54,10 +54,11 @@ class SourceController extends Controller
             ->latest()
             ->simplePaginate(30);
 
-        return view('pages.source-view', [
-            'posts' => $posts,
-            'source' => $source,
-        ]);
+        return view('pages.source-view')
+            ->with([
+                'posts' => $posts,
+                'source' => $source,
+            ]);
     }
 
     /**

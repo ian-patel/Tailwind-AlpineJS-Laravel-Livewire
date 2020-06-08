@@ -15,8 +15,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '13.x'
-    - run: yarn install
-    - run: yarn prod
+    - run: npm install
+    - run: npm run production
     - name: Commit built assets
       run: |
         git config --local user.email "action@github.com"

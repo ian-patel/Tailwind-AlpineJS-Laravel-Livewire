@@ -45,6 +45,16 @@ class LoginController extends Controller
     }
 
     /**
+     * Login page view
+     *
+     * @return void
+     */
+    public function index()
+    {
+        return view('pages.login');
+    }
+
+    /**
      * Redirect to social website.
      *
      * @param Request $request

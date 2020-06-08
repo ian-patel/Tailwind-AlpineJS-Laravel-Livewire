@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -40,9 +41,7 @@ Route::group(['prefix' => 's'], function () {
 Route::middleware('guest')->group(function () {
     Route::group(['prefix' => 'login'], function () {
         // Login page
-        Route::get('/', function () {
-            return view('pages.login');
-        })->name('auth.login');
+        Route::get('/', [LoginController::class, 'index'])->name('auth.login');
 
         // Login 0auth provider
         Route::get('{provider}', [LoginController::class, 'redirectToProvider']);

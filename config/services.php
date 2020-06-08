@@ -52,4 +52,7 @@ return [
         'redirect' => env('GOOGLE_CLIENT_CALLBACK_URL'),
     ],
 
+    'ga' => [
+        'tracking_id' => env('TRACKING_ID')
+    ],
 ];

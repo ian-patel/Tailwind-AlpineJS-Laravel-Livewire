@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'OneRead') }}</title>
     @livewireStyles
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <x-meta />
 </head>
 
 <body class="font-sans antialiased body" x-data="{ loginmodal: false }">

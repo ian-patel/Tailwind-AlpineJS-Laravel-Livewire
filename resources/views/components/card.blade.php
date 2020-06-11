@@ -3,7 +3,7 @@
         <div class="">
             <div class="mb-2">
                 <a href="{{ $post->URL }}" @if (!$post->source->is_frame_allowed) target="new" @endif
-                    class="text-2xl text-gray-900 leading-tight font-semibold
+                    class="text-xl font-serif text-gray-900 leading-tight font-semibold
                     hover:text-{{ $post->source->colour ?? 'purple' }}-600">
                     {{ $post->title }}
                     @if (!$post->source->is_frame_allowed)

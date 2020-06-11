@@ -112,7 +112,7 @@ class Post extends Model
      * Append favorite tag to Paginator for the user.
      *
      * @param Paginator $posts
-     * @parem User $user
+     * @param User $user
      * @return Paginator
      */
     public static function AppendFavorite(Paginator $posts, User $user): Paginator

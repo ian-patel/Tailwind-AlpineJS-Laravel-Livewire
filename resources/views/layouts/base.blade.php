@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ url('favicon.png') }}">
 
     <title>{{ config('app.name', 'OneRead') }}</title>
     @livewireStyles

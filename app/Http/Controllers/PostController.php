@@ -13,10 +13,25 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('source')
-            ->active()
+        $top = $request->input('top', 'latest');
+        $daysMap = [
+            'week' => 7,
+            'month' => 30,
+            'year' => 365,
+        ];
+
+        $query = Post::query()
+            ->with('source')
+            ->active();
+
+        if (isset($daysMap[$top])) {
+            $query->inDays($daysMap[$top])
+                ->orderBy('clicks', 'desc');
+        }
+
+        $posts = $query
             ->latest()
             ->simplePaginate(30);
 
@@ -25,7 +40,10 @@ class PostController extends Controller
         }
 
         return view('pages.welcome')
-            ->with(['posts' => $posts]);
+            ->with([
+                'posts' => $posts,
+                'active' => $top,
+            ]);
     }
 
     /**

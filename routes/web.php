@@ -20,7 +20,7 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('welcone-latest');
 
 // Post
 Route::group(['prefix' => 'p'], function () {

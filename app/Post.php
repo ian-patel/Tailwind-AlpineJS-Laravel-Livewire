@@ -83,6 +83,17 @@ class Post extends Model
     }
 
     /**
+     * Scope a query only in days.
+     *
+     * @return Builder
+     */
+    public function scopeInDays($query, int $days): Builder
+    {
+        $date = Carbon::today()->subDays($days);
+        return $query->where('created_at', '>=', $date);
+    }
+
+    /**
      * Create a new instance from feed.
      *
      * @param  array|object  $feed

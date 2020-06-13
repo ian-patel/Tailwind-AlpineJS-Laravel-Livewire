@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-between w-full p-4 leading-normal">
         <div class="">
             <div class="mb-2">
-                <a href="{{ $post->URL }}" @if (!$post->source->is_frame_allowed) target="new" @endif
+                <a href="{{ $post->URL }}" @if (!$post->source->is_frame_allowed) target="_blank" @endif
                     class="text-xl font-serif text-gray-900 leading-tight font-semibold
                     hover:text-{{ $post->source->colour ?? 'purple' }}-600">
                     {{ $post->title }}
@@ -22,9 +22,9 @@
                 <div class="flex items-center flex-1">
                     <div class="text-sm">
                         <p class="p-0 text-xs text-gray-600">
-                            {{ $post->created_at->format('F j') }} <span class="text-gray-800 ">・</span> <span class="">
-                                {{ $post->clicks }} views
-                            </span>
+                            {{ $post->created_at->diffForHumans() }}
+                            <span class="text-gray-800 ">・</span>
+                            <span>{{ $post->clicks }} views </span>
                         </p>
                     </div>
                 </div>

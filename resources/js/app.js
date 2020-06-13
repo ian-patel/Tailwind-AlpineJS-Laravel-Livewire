@@ -10,7 +10,7 @@ const searchbox = document.querySelector(".searchbox");
 
 if (searchbox) {
     body.addEventListener("keyup", event => {
-        if (event.key == "/") {
+        if (event.key === "/") {
             if (searchbox) {
                 searchbox.focus();
             }

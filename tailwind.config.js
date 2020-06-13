@@ -1,5 +1,5 @@
 module.exports = {
-    purge: [],
+    purge: ["./resources/views/**/*.blade.php"],
     theme: {
         filter: {
             none: "none",

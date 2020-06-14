@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('content')
 @section('page-header')
 <div class="border border-gray-500 bg-gray-50">
     <div class="max-w-screen-xl px-4 py-12 mx-auto text-center sm:px-6 lg:py-10 lg:px-8">
@@ -10,6 +9,8 @@
     </div>
 </div>
 @overwrite
+
+@section('content')
 @if ($posts->isNotEmpty())
 <x-cards :posts="$posts" />
 @else

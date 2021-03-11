@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="flex-none hidden h-48 overflow-hidden text-center bg-center bg-cover filter-grayscale group-hover:filter-none lg:block lg:h-auto lg:w-48"
+    <div class="flex-none hidden h-48 overflow-hidden text-center bg-center bg-cover  group-hover:filter-none lg:block lg:h-auto lg:w-48"
         style="background-image: url('{{ $post->image }}')" title="Image for {{ $post->title }}">
     </div>
 </div>
